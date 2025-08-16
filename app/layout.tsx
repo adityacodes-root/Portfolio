@@ -55,6 +55,7 @@ export const metadata: Metadata = {
     description: "Portfolio of Aditya, a software engineer specializing in cloud computing, full-stack development, and modern web technologies.",
     siteName: "Aditya's Portfolio",
   },
+
   robots: {
     index: true,
     follow: true,

@@ -1,0 +1,179 @@
+/* Optimized theme transitions */
+:root {
+  /* Smooth fade transition with optimized duration */
+  transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Enable hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Selective transitions for better performance */
+*,
+*::before,
+*::after {
+  transition: inherit;
+}
+
+/* Apply transitions only to theme-sensitive elements */
+[class*='theme-'],
+[class*='bg-'],
+[class*='text-'],
+[class*='border-'],
+svg,
+path {
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: auto;
+}
+
+/* Optimize SVG transitions */
+svg * {
+  transition: fill 400ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disable transitions for performance-sensitive elements */
+.no-transition,
+.no-transition *,
+img,
+video {
+  transition: none !important;
+}
+
+[data-theme-transition="blue-gray"] {
+  animation: blueGrayTransition 1s ease-in-out;
+}
+
+[data-theme-transition="deep-dark"] {
+  animation: deepDarkTransition 1s ease-in-out;
+}
+
+[data-theme-transition="sunset"] {
+  animation: sunsetTransition 1s ease-in-out;
+}
+
+[data-theme-transition="forest"] {
+  animation: forestTransition 1s ease-in-out;
+}
+
+[data-theme-transition="ocean"] {
+  animation: oceanTransition 1s ease-in-out;
+}
+
+[data-theme-transition="midnight"] {
+  animation: midnightTransition 1s ease-in-out;
+}
+
+@keyframes lightTransition {
+  0% {
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(120%) contrast(95%);
+    transform: scale(1.01);
+  }
+  100% {
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1);
+  }
+}
+
+@keyframes darkTransition {
+  0% {
+    filter: brightness(100%);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(80%);
+    transform: scale(0.99);
+  }
+  100% {
+    filter: brightness(100%);
+    transform: scale(1);
+  }
+}
+
+@keyframes blueGrayTransition {
+  0% {
+    filter: hue-rotate(0deg) saturate(100%) brightness(100%);
+  }
+  50% {
+    filter: hue-rotate(15deg) saturate(120%) brightness(105%);
+  }
+  100% {
+    filter: hue-rotate(0deg) saturate(100%) brightness(100%);
+  }
+}
+
+@keyframes deepDarkTransition {
+  0% {
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(60%) contrast(120%);
+    transform: scale(0.98);
+  }
+  100% {
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1);
+  }
+}
+
+@keyframes sunsetTransition {
+  0% {
+    filter: brightness(100%) saturate(100%) hue-rotate(0deg);
+  }
+  50% {
+    filter: brightness(115%) saturate(130%) hue-rotate(5deg);
+  }
+  100% {
+    filter: brightness(100%) saturate(100%) hue-rotate(0deg);
+  }
+}
+
+@keyframes forestTransition {
+  0% {
+    filter: hue-rotate(0deg) saturate(100%) brightness(100%);
+  }
+  50% {
+    filter: hue-rotate(-15deg) saturate(120%) brightness(105%);
+  }
+  100% {
+    filter: hue-rotate(0deg) saturate(100%) brightness(100%);
+  }
+}
+
+@keyframes oceanTransition {
+  0% {
+    filter: brightness(100%) saturate(100%);
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    filter: brightness(110%) saturate(110%);
+    transform: scale(1.02) translateY(-0.25%);
+  }
+  100% {
+    filter: brightness(100%) saturate(100%);
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes midnightTransition {
+  0% {
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    filter: brightness(70%) contrast(120%);
+    transform: scale(0.98) rotate(0.5deg);
+  }
+  100% {
+    filter: brightness(100%) contrast(100%);
+    transform: scale(1) rotate(0deg);
+  }
+}
