@@ -28,7 +28,7 @@ const experiences = [
     metrics: [
       { label: "Accuracy", value: "97%", icon: <Target className="h-3 w-3" /> },
       { label: "Records Processed", value: "50k+", icon: <TrendingUp className="h-3 w-3" /> },
-      { label: "Daily Messages", value: "Millions", icon: <Zap className="h-3 w-3" /> }
+      { label: ">7 Seconds", value: "NL2SQL engine response + execution time", icon: <Zap className="h-3 w-3" /> }
     ]
   },
   {
@@ -40,8 +40,7 @@ const experiences = [
     type: "Internship",
     description: [
       "Designed and developed a responsive website that increased NGO's online presence, improving accessibility for beneficiaries",
-      "Implemented an efficient document management system, reducing data retrieval time by 60% and improving offline access",
-      "Created an intuitive admin dashboard for staff, streamlining content updates and donor management processes",
+      "Implemented an efficient document management system, reducing data retrieval time by 60% and improving offline acces",
       "Optimized website performance, achieving a 90+ Lighthouse score and ensuring smooth access on low-bandwidth connections"
     ],
     logo: "/logos/bssk.jpg",
