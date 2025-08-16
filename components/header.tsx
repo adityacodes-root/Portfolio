@@ -98,19 +98,20 @@ export function Header() {
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
-                "group relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-card/50",
+                "group relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 hover:bg-card/50",
                 activeSection === link.href.substring(1) 
-                  ? "text-primary bg-primary/10 shadow-sm" 
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "text-primary bg-primary/10 shadow-sm pointer-events-auto" 
+                  : "text-muted-foreground hover:text-foreground pointer-events-auto"
               )}
+              onClick={(e) => { e.preventDefault(); handleLinkClick(e, link.href); }}
             >
               {link.label}
               {activeSection === link.href.substring(1) && (
                 <motion.div
                   layoutId="desktopActiveIndicator"
-                  className="absolute inset-0 bg-primary/10 rounded-lg -z-10"
+                  className="absolute inset-0 bg-primary/10 rounded-lg -z-10 pointer-events-none"
                   initial={false}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  transition={{ type: "spring", bounce: 0.15, duration: 0.35 }}
                 />
               )}
             </a>

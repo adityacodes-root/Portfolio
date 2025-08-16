@@ -2,38 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth theme transitions */
+/* Lightweight, targeted theme transitions - avoid layout repaints */
 :root {
-  transition: background-color 0.5s ease, 
-              color 0.5s ease,
-              border-color 0.5s ease,
-              fill 0.5s ease,
-              stroke 0.5s ease;
+  /* smoother, slightly faster cubic-bezier fade */
+  transition: background-color 1200ms cubic-bezier(0.33, 0, 0.2, 1),
+              color 1200ms cubic-bezier(0.33, 0, 0.2, 1),
+              border-color 1200ms cubic-bezier(0.33, 0, 0.2, 1);
+  will-change: background-color, color, border-color;
 }
 
-/* Make all elements inherit transition */
-* {
-  transition: inherit;
+/* Buttons: small color/transform feedback only */
+button {
+  transition: background-color 120ms ease, color 120ms ease, transform 120ms ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Exclude transitions from loading elements and cursor */
-.loader *,
-.custom-cursor * {
-  transition: none;
+button:active {
+  transform: scale(0.985);
+  transition: transform 80ms ease-out;
 }
 
-/* Custom cursor styles - must be at the top level */
-html, body, * {
-  cursor: none !important;
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root, button, svg, * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
-/* Ensure interactive elements also use custom cursor */
-a, button, [role="button"], input, textarea, select, 
-[type="button"], [type="submit"], [type="reset"],
-[contenteditable="true"], [tabindex]:not([tabindex="-1"]) {
-  cursor: none !important;
+/* Utility to disable animations if needed on low-end devices */
+.disable-animations,
+.disable-animations * {
+  transition: none !important;
+  animation: none !important;
 }
 
+/* Remove broad inheritance of transitions (was causing massive repaints)
+   Keep transitions targeted below for elements that need them. */
+
+/* Ensure theme classes are applied to the root element - keep CSS variables only */
 @layer base {
   :root {
     --radius: 0.5rem;
@@ -72,7 +81,7 @@ a, button, [role="button"], input, textarea, select,
   .forest,
   .ocean,
   .midnight {
-    @apply transition-colors duration-300;
+    /* No global transition here to prevent blinking */
   }
 
   .dark {
@@ -239,7 +248,8 @@ a, button, [role="button"], input, textarea, select,
 
   /* Ensure theme classes are applied to the root element */
   html {
-    @apply antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -251,18 +261,47 @@ a, button, [role="button"], input, textarea, select,
     @apply font-heading tracking-tight;
   }
 
-  /* Optimize transitions for specific elements */
+  /* Targeted transitions for components that change color only */
   .card,
   .popover,
   button,
   input,
-  textarea {
-    @apply transition-[background-color,border-color,text-color,fill,stroke] duration-200 ease-in-out;
+  textarea,
+  nav a,
+  .badge {
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
   }
 
   /* Remove transition from elements that don't need it */
   .no-transition,
   .no-transition * {
     transition: none !important;
+  }
+
+  /* Disable theme transitions on many components while keeping overlay transitions */
+  .theme-transition-disabled .card,
+  .theme-transition-disabled .popover,
+  .theme-transition-disabled button,
+  .theme-transition-disabled input,
+  .theme-transition-disabled textarea,
+  .theme-transition-disabled nav a,
+  .theme-transition-disabled .badge,
+  .theme-transition-disabled img,
+  .theme-transition-disabled svg,
+  .theme-transition-disabled path,
+  .theme-transition-disabled .container,
+  .theme-transition-disabled .header,
+  .theme-transition-disabled .footer,
+  .theme-transition-disabled .project,
+  .theme-transition-disabled [data-theme-sensitive] {
+    transition: none !important;
+    animation: none !important;
+    will-change: auto !important;
+  }
+
+  /* Ensure the overlay isn't affected */
+  .theme-fade {
+    transition: opacity 1200ms cubic-bezier(0.33, 0, 0.2, 1) !important;
+    will-change: opacity;
   }
 }

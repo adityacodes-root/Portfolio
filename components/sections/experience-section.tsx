@@ -135,10 +135,13 @@ export function ExperienceSection() {
             {experiences.map((exp) => (
               <button
                 key={exp.id}
-                onClick={() => setActiveExperience(exp)}
-                className={`relative flex items-center gap-3 px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                onClick={() => {
+                  // Prevent rapid repeated clicks
+                  setTimeout(() => setActiveExperience(exp), 50)
+                }}
+                className={`relative flex items-center gap-3 px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-150 focus:outline-none ${
                   activeExperience.id === exp.id
-                    ? 'bg-primary text-primary-foreground shadow-lg'
+                    ? 'bg-primary text-primary-foreground shadow-lg pointer-events-none'
                     : 'text-muted-foreground hover:text-foreground hover:bg-card/80'
                 }`}
               >
@@ -159,9 +162,9 @@ export function ExperienceSection() {
                 {activeExperience.id === exp.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-primary rounded-lg -z-10"
+                    className="absolute inset-0 bg-primary rounded-lg -z-10 pointer-events-none"
                     initial={false}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ type: 'spring', bounce: 0.15, duration: 0.35 }}
                   />
                 )}
               </button>
@@ -287,7 +290,7 @@ export function ExperienceSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.3 }}
           className="text-center mt-12"
         >
           <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full border bg-card/50 backdrop-blur-sm">

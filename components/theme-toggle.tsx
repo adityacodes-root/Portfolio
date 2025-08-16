@@ -38,6 +38,7 @@ export function ThemeToggle() {
   const { setTheme, theme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
   const [isAnimating, setIsAnimating] = React.useState(false)
+  const [open, setOpen] = React.useState(false)
 
   // Ensure we only render after mounting to avoid hydration mismatch
   React.useEffect(() => {
@@ -50,14 +51,22 @@ export function ThemeToggle() {
 
   const handleThemeChange = (newTheme: string) => {
     if (newTheme === theme || isAnimating) return
-    
+
     setIsAnimating(true)
+
+    // Close dropdown immediately
+    setOpen(false)
+
+    // Let overlay show before theme flips
+    window.dispatchEvent(new Event('theme:aboutToChange'))
+
+    // Change theme immediately
     setTheme(newTheme)
-    
-    // Reset animation state after transition
+
+    // Reset animation state after the color fade duration (1.5s) + small buffer
     setTimeout(() => {
       setIsAnimating(false)
-    }, 600)
+    }, 1600)
   }
 
   if (!mounted) {
@@ -65,7 +74,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button 
           variant="ghost" 

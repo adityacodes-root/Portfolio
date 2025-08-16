@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/sonner"
 import { Loader } from "@/components/loader"
 import { CursorWrapper } from "@/components/cursor-wrapper"
+import ThemeFade from '@/components/theme-fade'
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -121,6 +122,7 @@ export default function RootLayout({
             "midnight"
           ]}
         >
+          <ThemeFade />
           <CursorWrapper />
           <Loader />
           <div className="relative flex min-h-screen flex-col">
