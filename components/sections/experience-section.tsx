@@ -28,7 +28,7 @@ const experiences = [
     metrics: [
       { label: "Accuracy", value: "97%", icon: <Target className="h-3 w-3" /> },
       { label: "Records Processed", value: "50k+", icon: <TrendingUp className="h-3 w-3" /> },
-      { label: ">7 Seconds", value: "NL2SQL engine response + execution time", icon: <Zap className="h-3 w-3" /> }
+      { label: "NL2SQL engine response + execution time", value: "<7 Seconds", icon: <Zap className="h-3 w-3" /> }
     ]
   },
   {
