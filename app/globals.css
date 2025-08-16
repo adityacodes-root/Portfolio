@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth theme transitions */
+:root {
+  transition: background-color 0.5s ease, 
+              color 0.5s ease,
+              border-color 0.5s ease,
+              fill 0.5s ease,
+              stroke 0.5s ease;
+}
+
+/* Make all elements inherit transition */
+* {
+  transition: inherit;
+}
+
+/* Exclude transitions from loading elements and cursor */
+.loader *,
+.custom-cursor * {
+  transition: none;
+}
+
+/* Custom cursor styles - must be at the top level */
+html, body, * {
+  cursor: none !important;
+}
+
+/* Ensure interactive elements also use custom cursor */
+a, button, [role="button"], input, textarea, select, 
+[type="button"], [type="submit"], [type="reset"],
+[contenteditable="true"], [tabindex]:not([tabindex="-1"]) {
+  cursor: none !important;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+
+  /* Base theme variables */
+  :root,
+  .light {
+    /* Light Theme - Clean & Professional */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+  }
+
+  /* Theme classes */
+  .dark,
+  .blue-gray,
+  .deep-dark,
+  .sunset,
+  .forest,
+  .ocean,
+  .midnight {
+    @apply transition-colors duration-300;
+  }
+
+  .dark {
+    /* Dark Theme - High Contrast & Modern */
+    --background: 240 10% 8%; /* Darker, slightly blue-tinted black */
+    --foreground: 0 0% 96%; /* Light Gray (not pure white for comfort) */
+    --card: 240 10% 12%; /* Slightly lighter than background for depth */
+    --card-foreground: 0 0% 96%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 210 90% 65%; /* Vibrant, lighter Blue for dark mode */
+    --primary-foreground: 240 5% 10%; /* Dark text on light primary */
+    --secondary: 240 4% 18%; /* Dark Gray */
+    --secondary-foreground: 0 0% 96%;
+    --muted: 240 4% 18%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 4% 18%;
+    --accent-foreground: 0 0% 96%;
+    --destructive: 0 63% 40%; /* Deeper Red */
+    --destructive-foreground: 0 0% 96%;
+    --border: 240 4% 18%;
+    --input: 240 4% 18%;
+    --ring: 210 90% 65%;
+  }
+
+  .blue-gray {
+    /* Blue Gray Theme - Cool, Professional, Muted & Distinct */
+    --background: 215 35% 85%; /* Noticeably grayer/bluer, less bright */
+    --foreground: 215 25% 15%; /* Darker, more muted Blue-Gray */
+    --card: 215 35% 92%; /* Lighter card background */
+    --card-foreground: 215 25% 15%;
+    --popover: 215 35% 85%;
+    --popover-foreground: 215 25% 15%;
+    --primary: 210 35% 45%; /* Much more muted, darker, desaturated blue */
+    --primary-foreground: 0 0% 98%; /* Lighter foreground for this primary */
+    --secondary: 215 30% 78%; /* Darker secondary */
+    --secondary-foreground: 215 25% 15%;
+    --muted: 215 30% 78%;
+    --muted-foreground: 215 20% 40%; /* Darker muted text */
+    --accent: 215 30% 78%;
+    --accent-foreground: 210 35% 45%;
+    --border: 215 25% 70%; /* Darker border */
+    --input: 215 25% 70%;
+    --ring: 210 35% 45%;
+  }
+
+  .deep-dark {
+    /* Deep Dark Theme - Futuristic, Minimal, Stark & Distinct */
+    --background: 220 20% 4%; /* Extremely dark, cool hint */
+    --foreground: 200 25% 88%; /* Off-white, slightly dimmer */
+    --card: 220 20% 9%; /* Barely lighter than background */
+    --card-foreground: 200 25% 88%;
+    --popover: 220 20% 4%;
+    --popover-foreground: 200 25% 88%;
+    --primary: 170 90% 50%; /* Shifted to a more greenish Cyan/Turquoise */
+    --primary-foreground: 220 20% 4%; /* Very dark text on primary */
+    --secondary: 220 15% 12%; /* Darker Gray */
+    --secondary-foreground: 200 25% 88%;
+    --muted: 220 15% 12%;
+    --muted-foreground: 200 15% 60%; /* Dimmer muted text */
+    --accent: 220 15% 12%;
+    --accent-foreground: 170 90% 50%;
+    --border: 220 15% 12%;
+    --input: 220 15% 12%;
+    --ring: 170 90% 50%;
+  }
+
+  .sunset {
+    /* Sunset Theme - Warm, Inviting, & Professional */
+    --background: 30 30% 98%; /* Warm off-white */
+    --foreground: 20 30% 15%; /* Warm dark gray */
+    --card: 30 25% 96%; /* Slightly warmer card background */
+    --card-foreground: 20 30% 15%;
+    --popover: 30 30% 98%;
+    --popover-foreground: 20 30% 15%;
+    --primary: 25 95% 50%; /* Warm orange */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 30 20% 90%; /* Warm light gray */
+    --secondary-foreground: 20 30% 15%;
+    --muted: 30 20% 90%;
+    --muted-foreground: 20 20% 40%;
+    --accent: 30 20% 90%;
+    --accent-foreground: 25 95% 50%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 25 95% 50%;
+  }
+
+  .forest {
+    /* Rainforest Theme - Deep, Rich, & Natural */
+    --background: 150 30% 12%; /* Deep rainforest green */
+    --foreground: 150 20% 90%; /* Light sage */
+    --card: 150 30% 15%; /* Slightly lighter rainforest */
+    --card-foreground: 150 20% 90%;
+    --popover: 150 30% 12%;
+    --popover-foreground: 150 20% 90%;
+    --primary: 142 70% 45%; /* Vibrant forest green */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 150 25% 20%; /* Darker rainforest */
+    --secondary-foreground: 150 20% 90%;
+    --muted: 150 25% 20%;
+    --muted-foreground: 150 20% 70%;
+    --accent: 150 25% 20%;
+    --accent-foreground: 142 70% 45%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 25% 20%;
+    --input: 150 25% 20%;
+    --ring: 142 70% 45%;
+  }
+
+  .ocean {
+    /* Ocean Theme - Deep, Professional, & Serene */
+    --background: 200 40% 15%; /* Deep ocean blue */
+    --foreground: 200 20% 90%; /* Light ocean blue */
+    --card: 200 40% 18%; /* Slightly lighter ocean */
+    --card-foreground: 200 20% 90%;
+    --popover: 200 40% 15%;
+    --popover-foreground: 200 20% 90%;
+    --primary: 195 85% 45%; /* Bright ocean blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 200 35% 25%; /* Medium ocean blue */
+    --secondary-foreground: 200 20% 90%;
+    --muted: 200 35% 25%;
+    --muted-foreground: 200 20% 70%;
+    --accent: 200 35% 25%;
+    --accent-foreground: 195 85% 45%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 200 35% 25%;
+    --input: 200 35% 25%;
+    --ring: 195 85% 45%;
+  }
+
+  .midnight {
+    /* Midnight Theme - Rich, Deep, & Professional */
+    --background: 230 25% 8%; /* Deep midnight blue */
+    --foreground: 220 25% 90%; /* Soft white */
+    --card: 230 25% 12%; /* Slightly lighter midnight */
+    --card-foreground: 220 25% 90%;
+    --popover: 230 25% 8%;
+    --popover-foreground: 220 25% 90%;
+    --primary: 260 85% 65%; /* Rich purple */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 230 20% 15%; /* Darker midnight */
+    --secondary-foreground: 220 25% 90%;
+    --muted: 230 20% 15%;
+    --muted-foreground: 220 20% 70%;
+    --accent: 230 20% 15%;
+    --accent-foreground: 260 85% 65%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 230 20% 15%;
+    --input: 230 20% 15%;
+    --ring: 260 85% 65%;
+  }
+
+  /* Ensure smooth transitions for all theme changes */
+  * {
+    @apply transition-[background-color,border-color,text-color,fill,stroke] duration-200;
+  }
+
+  /* Ensure theme classes are applied to the root element */
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+
+  /* Optimize transitions for specific elements */
+  .card,
+  .popover,
+  button,
+  input,
+  textarea {
+    @apply transition-[background-color,border-color,text-color,fill,stroke] duration-200 ease-in-out;
+  }
+
+  /* Remove transition from elements that don't need it */
+  .no-transition,
+  .no-transition * {
+    transition: none !important;
+  }
+}
