@@ -35,7 +35,7 @@ const experiences = [
     id: "bssk",
     role: "Web Developer Intern",
     company: "Bharatiya Samaj Seva Kendra (NGO)",
-    duration: "Mar – May 2024",
+    duration: "June – August 2024",
     location: "Pune, India",
     type: "Internship",
     description: [
