@@ -12,7 +12,26 @@ import { ProjectModal } from "../project-modal"
 import { cn } from "@/lib/utils"
 
 export const projectsData = [
+   {
+  title: "OculusAI",
+  shortDescription: "A web platform that uses AI to analyze vision health, featuring deep learning models for retinal disease detection and color blindness testing. Built with Flask, Next.js, and TensorFlow/Keras.",
+  longDescription: "OculusAI is an advanced AI-powered platform for eye disease detection and color blindness analysis. Users can upload retinal images for instant diagnosis or take an interactive Ishihara color vision test. The system leverages deep learning models for real-time inference, provides professional PDF reports, and supports both desktop and mobile devices. Multiple user interfaces are available, including a Next.js web app, Streamlit dashboard, and REST API. Designed for clinicians, researchers, and individuals, OculusAI streamlines image analysis, reporting, and patient evaluation with a scalable, modular architecture.",
+  challenges: "Key challenges included building robust image validation to filter out non-retinal images, optimizing AI models for real-time CPU inference, and designing a mobile-friendly, responsive UI. Integrating multiple disease types and color blindness categories, and ensuring clear, user-friendly error handling, also required careful engineering.",
+  learnings: "Developing OculusAI improved my skills in deep learning model deployment, full-stack development, and responsive UI design. I gained experience in medical image analysis, building multi-interface systems, and creating secure, scalable web applications for healthcare use cases.",
+  stack: ["NextJS", "Python (Flask, Streamlit)", "TensorFlow/Keras", "Tailwind", "shadcn/ui", "jsPDF"],
+  image: "/images/oculusai.png",
+  screenshots: [
+    "/images/oculusai_ss1.png",
+    "/images/oculusai_ss2.png",
+    "/images/oculusai_ss3.png",
+    "/images/oculusai_ss4.png"
+  ],
+  githubUrl: "https://github.com/adityacodes-root/OculusAI",
+  liveUrl: "https://main.d9byo4q7538fc.amplifyapp.com/colorblindness",
+  slug: "OculusAI"
+},
   {
+    
     title:"EchoDB",
     shortDescription:"A full-stack application that enables users to interact with PostgreSQL databases using natural language. Built with FastAPI and OpenAI's GPT-4o, it translates user prompts into SQL and returns results securely.",
     longDescription:"EchoDB is an AI-powered tool that simplifies database interaction by allowing users to input natural language queries, which are translated into SQL using OpenAI's GPT-4o model. It includes an approval layer for SQL execution, CRUD support, and a minimal frontend built with HTML, CSS, and JavaScript. The system is designed for developers and analysts to query PostgreSQL or MySQL databases without writing SQL manually. Built with scalability, security, and modularity in mind, EchoDB bridges the gap between natural language and database management.",
