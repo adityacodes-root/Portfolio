@@ -19,12 +19,14 @@ export const projectsData = [
   challenges: "Key challenges included building robust image validation to filter out non-retinal images, optimizing AI models for real-time CPU inference, and designing a mobile-friendly, responsive UI. Integrating multiple disease types and color blindness categories, and ensuring clear, user-friendly error handling, also required careful engineering.",
   learnings: "Developing OculusAI improved my skills in deep learning model deployment, full-stack development, and responsive UI design. I gained experience in medical image analysis, building multi-interface systems, and creating secure, scalable web applications for healthcare use cases.",
   stack: ["NextJS", "Python (Flask, Streamlit)", "TensorFlow/Keras", "Tailwind", "shadcn/ui", "jsPDF"],
-  image: "/images/oculusai.png",
+  image: "/images/oculusai1.png",
   screenshots: [
     "/images/oculusai_ss1.png",
     "/images/oculusai_ss2.png",
     "/images/oculusai_ss3.png",
-    "/images/oculusai_ss4.png"
+    "/images/oculusai_ss4.png",
+    "/images/oculusai_ss5.png",
+   
   ],
   githubUrl: "https://github.com/adityacodes-root/OculusAI",
   liveUrl: "https://main.d9byo4q7538fc.amplifyapp.com/colorblindness",
