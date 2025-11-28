@@ -29,7 +29,7 @@ export const projectsData = [
    
   ],
   githubUrl: "https://github.com/adityacodes-root/OculusAI",
-  liveUrl: "https://main.d9byo4q7538fc.amplifyapp.com/colorblindness",
+  liveUrl: "https://main.d9byo4q7538fc.amplifyapp.com",
   slug: "OculusAI"
 },
   {
