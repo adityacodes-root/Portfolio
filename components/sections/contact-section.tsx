@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Github, Linkedin, Mail, Send, MapPin, Phone, Copy, Check } from "lucide-react"
+import { Github, Linkedin, Mail, Send, MapPin, Phone, Copy, Check, FileText } from "lucide-react"
 import { SectionWrapper } from "../section-wrapper"
 import { motion } from "framer-motion"
 import { useState } from "react"
@@ -237,6 +237,11 @@ export function ContactSection() {
             <Button variant="outline" size="icon" asChild className="hover:bg-primary/10">
               <a href="https://www.linkedin.com/in/aditya-dubey-438a11301/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
+              </a>
+            </Button>
+            <Button variant="outline" size="icon" asChild className="hover:bg-primary/10" aria-label="View Resume">
+              <a href="/AdityaDubey_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                <FileText className="h-5 w-5" />
               </a>
             </Button>
           </div>

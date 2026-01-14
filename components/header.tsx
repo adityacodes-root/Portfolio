@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Cloud, Menu, Github, Linkedin, Home, User, Briefcase, Code, FolderOpen, MessageSquare, Star, X } from "lucide-react"
+import { Cloud, Menu, Github, Linkedin, Home, User, Briefcase, Code, FolderOpen, MessageSquare, Star, X, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader, SheetDescription } from "@/components/ui/sheet"
 import { ThemeToggle } from "./theme-toggle"
@@ -117,7 +117,7 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex flex-1 items-center justify-end gap-2">
+        <div className="flex flex-1 items-center justify-end gap-7">
           <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10">
             <a href="https://github.com/adityacodes-root" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="h-5 w-5" />
@@ -126,6 +126,11 @@ export function Header() {
           <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10">
             <a href="https://www.linkedin.com/in/aditya-dubey-438a11301/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <Linkedin className="h-5 w-5" />
+            </a>
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10" aria-label="Resume">
+            <a href="/AdityaDubey_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <FileText className="h-5 w-5" />
             </a>
           </Button>
           <div className="relative flex items-center gap-2">
@@ -170,6 +175,11 @@ export function Header() {
                     <Button variant="ghost" size="icon" asChild className="h-8 w-8 hover:bg-primary/10 border border-border/50">
                       <a href="https://www.linkedin.com/in/adityacodes-root" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <Linkedin className="h-4 w-4" />
+                      </a>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild className="h-8 w-8" aria-label="View Resume">
+                      <a href="/AdityaDubey_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4" />
                       </a>
                     </Button>
                     <div className="h-8 w-8 border border-border/50 rounded-md flex items-center justify-center hover:bg-primary/10">
