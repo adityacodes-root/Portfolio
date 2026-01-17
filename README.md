@@ -12,7 +12,6 @@ After rebuilding my portfolios 4 times(yes, four😅), I have landed on a versio
 - Tailwind CSS
 - Radix UI
 - Framer Motion
-- Recharts
 
 ## 🏗️ How to Clone and Run Locally
 
@@ -43,6 +42,6 @@ After rebuilding my portfolios 4 times(yes, four😅), I have landed on a versio
 4. **Open in Browser**  
    Go to [http://localhost:3000](http://localhost:3000)
 
-Thanks for visiting my repo, drop a ⭐ if you feel like it 😗
+Thanks for visiting this repo, drop a ⭐ if you feel like it 😗
 
 ---
