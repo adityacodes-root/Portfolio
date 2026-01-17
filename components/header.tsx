@@ -91,7 +91,7 @@ export function Header() {
           </div>
           <span className="hidden font-bold sm:inline-block bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent group-hover:from-foreground/90 group-hover:to-foreground transition-all duration-300">Aditya</span>
         </a>
-        <nav className="hidden gap-4 sm:gap-6 text-sm md:flex">
+        <nav className="hidden gap-4 sm:gap-6 text-sm xl:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -117,7 +117,7 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex flex-1 items-center justify-end gap-7">
+        <div className="flex flex-1 items-center justify-end gap-2 min-w-0 flex-shrink flex-nowrap">
           <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10">
             <a href="https://github.com/adityacodes-root" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="h-5 w-5" />
@@ -144,7 +144,7 @@ export function Header() {
               <Button 
                 variant="ghost" 
                 size="icon" 
-                className="group md:hidden"
+                className="group flex xl:hidden"
                 aria-label="Open navigation menu"
               >
                 <Menu className="h-5 w-5 transition-transform duration-200 group-hover:scale-105" />
@@ -166,7 +166,7 @@ export function Header() {
               <div className="flex flex-col h-full">
                 {/* Top Section with Social and Theme */}
                 <div className="p-4 border-b border-border/50">
-                  <div className="flex items-center justify-center gap-4">
+                  <div className="flex items-center justify-center gap-2 flex-wrap">
                     <Button variant="ghost" size="icon" asChild className="h-8 w-8 hover:bg-primary/10 border border-border/50">
                       <a href="https://github.com/adityacodes-root" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                         <Github className="h-4 w-4" />
