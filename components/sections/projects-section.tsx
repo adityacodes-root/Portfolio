@@ -12,6 +12,23 @@ import { ProjectModal } from "../project-modal"
 import { cn } from "@/lib/utils"
 
 export const projectsData = [
+   {title: "Multi Cloud Web Application",
+    shortDescription: "A production-ready two-tier web application demonstrating modern DevOps practices across AWS and GCP. Built with Python FastAPI, Next.js, and fully automated CI/CD pipelines." , 
+    longDescription: "This project showcases a complete cloud-native application deployed to both AWS and GCP, with infrastructure as code, automated testing, and comprehensive monitoring. The application features a FastAPI backend and Next.js frontend, demonstrating my ability to work with modern cloud platforms and DevOps tooling." ,
+    challenges: "Debugging failed deployments, tweaking configs, and seeing real failures." , 
+    learnings: "The best part was pushing code and watching it automatically build, test, push, and deploy to production with zero manual steps. Seeing the pipeline run successfully after fixing broken deployments made everything click. Building this was way made me learn than reading 10 articles about DevOps. Debugging failed deployments, tweaking configs, and seeing real failures, fixes, and success teaches you what documentation cannot." ,
+    stack: [ "AWS" , "GCP" , "Terraform" , "GitHub Actions" , "Docker", "NextJS", "Python" , "FastAPI" , "Uvicorn" , "Pytest" , "Jist" ] , 
+    image: "/images/MultiCloud.png", 
+    screenshots: [
+       "/images/MultiCloud1.png",
+       "/images/MultiCloud2.png",
+       "/images/MultiCloud3.png",
+       "/images/MultiCloud4.png",
+       "/images/MultiCloud5.png",
+       ],
+    githubUrl: "https://github.com/adityacodes-root/DevOps-Project", 
+    slug: "MultiCloud"     
+    },
    {
   title: "OculusAI",
   shortDescription: "A web platform that uses AI to analyze vision health, featuring deep learning models for retinal disease detection and color blindness testing. Built with Flask, Next.js, and TensorFlow/Keras.",
