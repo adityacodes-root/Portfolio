@@ -20,7 +20,7 @@ export const projectsData = [
     stack: [ "AWS" , "GCP" , "Terraform" , "GitHub Actions" , "Docker", "NextJS", "Python" , "FastAPI" , "Uvicorn" , "Pytest" , "Jist" ] , 
     image: "/images/MultiCloud.png", 
     screenshots: [
-       "/images/MultiCloud1.png",
+       "/images/MultiCloud.png",
        "/images/MultiCloud2.png",
        "/images/MultiCloud3.png",
        "/images/MultiCloud4.png",
