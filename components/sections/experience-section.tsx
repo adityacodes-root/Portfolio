@@ -40,7 +40,7 @@ const experiences = [
     type: "Internship",
     description: [
       "Designed and developed a responsive website that increased NGO's online presence, improving accessibility for beneficiaries",
-      "Implemented an efficient document management system, reducing data retrieval time by 60% and improving offline acces",
+      "Implemented an efficient document management system, reducing data retrieval time by 60% and improving offline access",
       "Optimized website performance, achieving a 90+ Lighthouse score and ensuring smooth access on low-bandwidth connections"
     ],
     logo: "/logos/bssk.jpg",
