@@ -34,7 +34,7 @@ export const projectsData = [
     shortDescription: "An AI-powered visualization tool that generates Mermaid architecture diagrams for GitHub repositories using Gemini API.",
     longDescription: "Draw My Repo is built to help developers visualize the architecture of GitHub repositories effortlessly. By simply providing a repository link, the tool clones the codebase, analyzes its structure and configuration files, and leverages the Gemini API to generate an interactive Mermaid diagram along with a concise explanation. It features various visualization modes, local caching with SQLite, and clickable diagram components that link directly to the source files on GitHub.",
     challenges: "Developing a robust repository analysis engine that handles diverse project structures and accurately maps dependencies into Mermaid syntax. Calibrating the AI prompts to provide meaningful architecture summaries while maintaining local caching to improve performance and reduce API costs.",
-    learnings: "Gained deep experience in prompt engineering with Gemini API, repository cloning management, and Mermaid diagram generation. Learned how to create interactive and clickable SVG visualizations and implement efficient local caching using SQLite.",
+    learnings: "Gained experience in prompt engineering, repository cloning management, and Mermaid diagram generation. Learned how to create interactive and clickable visualizations and implement efficient caching using SQLite.",
     stack: ["Python", "FastAPI", "Gemini API", "Mermaid.js", "SQLite", "Docker", "JavaScript"],
     image: "/images/drawmyrepo.png",
     screenshots: [
@@ -43,7 +43,6 @@ export const projectsData = [
       "/images/drawmyrepo2.png",
       "/images/drawmyrepo3.png",
       "/images/drawmyrepo4.png",
-      "/images/drawmyrepo5.png",
     ],
     githubUrl: "https://github.com/adityacodes-root/DrawMyRepo",
     slug: "DrawMyRepo"
