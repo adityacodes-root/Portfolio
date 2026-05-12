@@ -149,16 +149,17 @@ export function ProjectsSection() {
   const checkScroll = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
-      setShowLeftArrow(scrollLeft > 0)
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1)
+      setShowLeftArrow(scrollLeft > 5)
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 5)
     }
   }
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current
     if (scrollContainer) {
-      checkScroll()
-      scrollContainer.addEventListener('scroll', checkScroll)
+
+      requestAnimationFrame(() => checkScroll())
+      scrollContainer.addEventListener('scroll', checkScroll, { passive: true })
       window.addEventListener('resize', checkScroll)
       return () => {
         scrollContainer.removeEventListener('scroll', checkScroll)
@@ -168,24 +169,31 @@ export function ProjectsSection() {
   }, [])
 
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = scrollContainerRef.current.clientWidth * 0.8
-      const targetScroll = direction === 'left' 
-        ? scrollContainerRef.current.scrollLeft - scrollAmount
-        : scrollContainerRef.current.scrollLeft + scrollAmount
-      
-      scrollContainerRef.current.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
-      })
-    }
+    if (!scrollContainerRef.current) return
+    const container = scrollContainerRef.current
+    // (first card element) + gap
+    const firstCard = container.querySelector(':scope > div') as HTMLElement | null
+    const cardWidth = firstCard ? firstCard.offsetWidth : 320
+    const gap = 24 // matches gap-6 (1.5rem = 24px)
+    const scrollAmount = cardWidth + gap
+
+    const targetScroll = direction === 'left'
+      ? container.scrollLeft - scrollAmount
+      : container.scrollLeft + scrollAmount
+
+    container.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    })
+
+
   }
 
   return (
     <SectionWrapper id="projects">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1.5, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className="text-center px-4 sm:px-6"
@@ -198,43 +206,75 @@ export function ProjectsSection() {
         </p>
       </motion.div>
 
-      <div className="relative mt-8 sm:mt-12 px-4 sm:px-6">
-        {/* Left Arrow */}
+      <div className="relative mt-8 sm:mt-12 px-10 sm:px-14">
+        {/* Left Arrow Button */}
         <button
           onClick={() => scroll('left')}
           className={cn(
-            "absolute left-0 top-1/2 -translate-y-1/2 z-10",
-            "w-6 h-12 sm:w-8 sm:h-16",
-            "flex items-center justify-center",
-            "text-muted-foreground/50 hover:text-primary/80",
-            "transition-colors duration-200",
-            !showLeftArrow && "opacity-0 pointer-events-none"
+            "absolute left-0 top-1/2 -translate-y-1/2 z-20",
+            "w-8 h-8 sm:w-10 sm:h-10",
+            "rounded-full flex items-center justify-center",
+            "bg-background/90 backdrop-blur-md",
+            "border border-border/60",
+            "text-foreground/70 hover:text-primary hover:border-primary/50",
+            "shadow-lg hover:shadow-xl",
+            "transition-all duration-300 ease-out",
+            "hover:scale-110 active:scale-95",
+            showLeftArrow
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-2 pointer-events-none"
           )}
           aria-label="Scroll left"
         >
-          <div className="w-3 h-3 sm:w-4 sm:h-4 border-l-2 border-t-2 border-current rotate-[-45deg]" />
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
 
-        {/* Right Arrow */}
+        {/* Right Arrow Button */}
         <button
           onClick={() => scroll('right')}
           className={cn(
-            "absolute right-0 top-1/2 -translate-y-1/2 z-10",
-            "w-6 h-12 sm:w-8 sm:h-16",
-            "flex items-center justify-center",
-            "text-muted-foreground/50 hover:text-primary/80",
-            "transition-colors duration-200",
-            !showRightArrow && "opacity-0 pointer-events-none"
+            "absolute right-0 top-1/2 -translate-y-1/2 z-20",
+            "w-8 h-8 sm:w-10 sm:h-10",
+            "rounded-full flex items-center justify-center",
+            "bg-background/90 backdrop-blur-md",
+            "border border-border/60",
+            "text-foreground/70 hover:text-primary hover:border-primary/50",
+            "shadow-lg hover:shadow-xl",
+            "transition-all duration-300 ease-out",
+            "hover:scale-110 active:scale-95",
+            showRightArrow
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 translate-x-2 pointer-events-none"
           )}
           aria-label="Scroll right"
         >
-          <div className="w-3 h-3 sm:w-4 sm:h-4 border-r-2 border-t-2 border-current rotate-45" />
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </button>
+
+        {/* Left gradient fade */}
+        <div
+          className={cn(
+            "absolute left-10 sm:left-14 top-0 bottom-0 w-8 sm:w-12 z-10 pointer-events-none",
+            "bg-gradient-to-r from-background to-transparent",
+            "transition-opacity duration-300",
+            showLeftArrow ? "opacity-100" : "opacity-0"
+          )}
+        />
+
+        {/* Right gradient fade */}
+        <div
+          className={cn(
+            "absolute right-10 sm:right-14 top-0 bottom-0 w-8 sm:w-12 z-10 pointer-events-none",
+            "bg-gradient-to-l from-background to-transparent",
+            "transition-opacity duration-300",
+            showRightArrow ? "opacity-100" : "opacity-0"
+          )}
+        />
 
         {/* Scroll Container */}
         <div 
           ref={scrollContainerRef}
-          className="relative flex gap-4 sm:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none"
+          className="relative flex gap-4 sm:gap-6 overflow-x-auto pb-4"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
