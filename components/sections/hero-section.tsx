@@ -1,10 +1,8 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useScroll, useTransform, useMotionValue, useSpring, useMotionValueEvent } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Code, Cpu, Cloud, ArrowRight } from "lucide-react"
-import { useState } from "react"
 
 export function HeroSection() {
   const { scrollYProgress } = useScroll()
@@ -12,18 +10,30 @@ export function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
 
-  // Mouse parallax effect
-  const [hover, setHover] = useState(false)
+  // Mouse parallax motion values
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 150, damping: 15 })
-  const springY = useSpring(mouseY, { stiffness: 150, damping: 15 })
 
-  useMotionValueEvent(springX, "change", (latest) => { if (hover) { mouseX.set(latest); } })
-  useMotionValueEvent(springY, "change", (latest) => { if (hover) { mouseY.set(latest); } })
+  // Smooth springs for interpolation (stiffness: 60, damping: 20 makes it glide gracefully)
+  const springX = useSpring(mouseX, { stiffness: 60, damping: 20 })
+  const springY = useSpring(mouseY, { stiffness: 60, damping: 20 })
 
-  const parallaxX = useTransform(springX, (x) => (hover ? x * 0.1 : 0))
-  const parallaxY = useTransform(springY, (y) => (hover ? y * 0.1 : 0))
+  // 1. Background layer parallax (Glow): moves very slowly
+  const bgParallaxX = useTransform(springX, (x) => x * 0.03)
+  const bgParallaxY = useTransform(springY, (y) => y * 0.03)
+
+  // 2. Midground layer parallax (Clouds): move at different speeds, some in opposite direction
+  const cloud1X = useTransform(springX, (x) => x * 0.08)
+  const cloud1Y = useTransform(springY, (y) => y * 0.08)
+
+  const cloud2X = useTransform(springX, (x) => x * -0.06)
+  const cloud2Y = useTransform(springY, (y) => y * -0.06)
+
+  const cloud3X = useTransform(springX, (x) => x * 0.1)
+  const cloud3Y = useTransform(springY, (y) => y * -0.08)
+
+  const cloud4X = useTransform(springX, (x) => x * -0.05)
+  const cloud4Y = useTransform(springY, (y) => y * 0.07)
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -44,13 +54,14 @@ export function HeroSection() {
       id="hero" 
       className="relative h-[100vh] w-full overflow-hidden" 
       onMouseMove={(e) => { 
-        if (hover) { 
-          mouseX.set(e.clientX - window.innerWidth / 2)
-          mouseY.set(e.clientY - window.innerHeight / 2)
-        } 
+        const rect = e.currentTarget.getBoundingClientRect()
+        mouseX.set(e.clientX - (rect.left + rect.width / 2))
+        mouseY.set(e.clientY - (rect.top + rect.height / 2))
       }} 
-      onMouseEnter={() => setHover(true)} 
-      onMouseLeave={() => setHover(false)}
+      onMouseLeave={() => {
+        mouseX.set(0)
+        mouseY.set(0)
+      }}
     >
       {/* Animated Background */}
       <motion.div
@@ -64,15 +75,25 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-secondary/50" />
         <motion.div 
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"
-          style={{ x: parallaxX, y: parallaxY }}
+          style={{ x: bgParallaxX, y: bgParallaxY }}
         />
-        <Cloud className="absolute top-[10%] left-[10%] h-32 w-32 text-primary/10 animate-float" />
-        <Cloud className="absolute top-[20%] right-[15%] h-48 w-48 text-primary/5 animate-float [animation-delay:-2s]" />
-        <Cloud className="absolute bottom-[10%] left-[20%] h-24 w-24 text-primary/10 animate-float [animation-delay:-4s]" />
-        <Cloud className="absolute bottom-[20%] right-[5%] h-36 w-36 text-primary/5 animate-float [animation-delay:-1s]" />
+        
+        {/* Parallax Clouds */}
+        <motion.div style={{ x: cloud1X, y: cloud1Y }} className="absolute top-[10%] left-[10%] h-32 w-32 text-primary/10 pointer-events-none">
+          <Cloud className="h-full w-full animate-float" />
+        </motion.div>
+        <motion.div style={{ x: cloud2X, y: cloud2Y }} className="absolute top-[20%] right-[15%] h-48 w-48 text-primary/5 pointer-events-none">
+          <Cloud className="h-full w-full animate-float [animation-delay:-2s]" />
+        </motion.div>
+        <motion.div style={{ x: cloud3X, y: cloud3Y }} className="absolute bottom-[10%] left-[20%] h-24 w-24 text-primary/10 pointer-events-none">
+          <Cloud className="h-full w-full animate-float [animation-delay:-4s]" />
+        </motion.div>
+        <motion.div style={{ x: cloud4X, y: cloud4Y }} className="absolute bottom-[20%] right-[5%] h-36 w-36 text-primary/5 pointer-events-none">
+          <Cloud className="h-full w-full animate-float [animation-delay:-1s]" />
+        </motion.div>
       </motion.div>
 
-      {/* Content */}
+      {/* Content (Static for readability and stable interactions) */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

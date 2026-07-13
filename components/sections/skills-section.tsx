@@ -7,12 +7,11 @@ import {
   Database,
   Cloud,
   TerminalIcon,
-  Palette,
   GitMerge,
-  Brain,
-  Zap,
-  Search,
+  Activity,
   Boxes,
+  Server,
+  BarChart2,
 } from "lucide-react"
 import type { JSX } from "react"
 
@@ -29,48 +28,46 @@ interface SkillCategory {
 
 const skillsData: SkillCategory[] = [
   {
-    title: "Frontend Development",
-    icon: <Palette className="h-6 w-6" />,
+    title: "Cloud & Platform Engineering",
+    icon: <Cloud className="h-6 w-6" />,
     skills: [
-      { name: "HTML", icon: <Code size={20} /> },
-      { name: "Tailwind CSS", icon: <Palette size={20} /> },
-      { name: "React", icon: <Zap size={20} /> },
-      { name: "Next.js", icon: <Code size={20} /> },
+      { name: "AWS", icon: <Cloud size={20} /> },
+      { name: "Kubernetes", icon: <Boxes size={20} /> },
+      { name: "Docker", icon: <Boxes size={20} /> },
+      { name: "Linux (RHEL, Fedora)", icon: <TerminalIcon size={20} /> },
+    ],
+  },
+  {
+    title: "DevOps & Observability",
+    icon: <Activity className="h-6 w-6" />,
+    skills: [
+      { name: "CI/CD", icon: <GitMerge size={20} /> },
+      { name: "GitHub Actions", icon: <GitMerge size={20} /> },
+      { name: "Prometheus", icon: <Activity size={20} /> },
+      { name: "Grafana", icon: <BarChart2 size={20} /> },
+      { name: "Loki", icon: <BarChart2 size={20} /> },
     ],
   },
   {
     title: "Backend Development",
+    icon: <Server className="h-6 w-6" />,
+    skills: [
+      { name: "Python", icon: <Code size={20} /> },
+      { name: "FastAPI", icon: <Server size={20} /> },
+      { name: "REST APIs", icon: <Server size={20} /> },
+      { name: "SQL", icon: <Database size={20} /> },
+      { name: "PostgreSQL", icon: <Database size={20} /> },
+      { name: "MongoDB", icon: <Database size={20} /> },
+    ],
+  },
+  {
+    title: "Programming & Automation",
     icon: <Code className="h-6 w-6" />,
     skills: [
-      { name: "Node.js", icon: <Code size={20} /> },
-      { name: "Express.js", icon: <Code size={20} /> },
       { name: "Python", icon: <Code size={20} /> },
-      { name: "MySQL", icon: <Database size={20} /> },
-      { name: "PostgreSQL", icon: <Database size={20} /> },
-    ],
-  },
-  {
-    title: "DevOps & Tools",
-    icon: <TerminalIcon className="h-6 w-6" />,
-    skills: [
-      { name: "Linux", icon: <TerminalIcon size={20} /> },
+      { name: "TypeScript", icon: <Code size={20} /> },
+      { name: "Bash", icon: <TerminalIcon size={20} /> },
       { name: "Git", icon: <GitMerge size={20} /> },
-      { name: "GitHub", icon: <GitMerge size={20} /> },
-      { name: "Docker", icon: <Boxes size={20} /> },
-      { name: "Kubernetes", icon: <Boxes size={20} /> },
-      { name: "AWS", icon: <Cloud size={20} /> },
-      { name: "Azure DevOps", icon: <Cloud size={20} /> },
-      { name: "VS Code", icon: <TerminalIcon size={20} /> },
-      { name: "RED (Robot Editor)", icon: <Brain size={20} /> },
-    ],
-  },
-  {
-    title: "Data & Analytics",
-    icon: <Search className="h-6 w-6" />,
-    skills: [
-      { name: "Elasticsearch", icon: <Search size={20} /> },
-      { name: "Kibana", icon: <Search size={20} /> },
-      { name: "Kibana Query Language", icon: <Code size={20} /> },
     ],
   },
 ]

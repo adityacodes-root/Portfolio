@@ -96,14 +96,13 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
               className={cn(
                 "group relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-150 hover:bg-card/50",
                 activeSection === link.href.substring(1) 
                   ? "text-primary bg-primary/10 shadow-sm pointer-events-auto" 
                   : "text-muted-foreground hover:text-foreground pointer-events-auto"
               )}
-              onClick={(e) => { e.preventDefault(); handleLinkClick(e, link.href); }}
+              onClick={(e) => handleLinkClick(e, link.href)}
             >
               {link.label}
               {activeSection === link.href.substring(1) && (
