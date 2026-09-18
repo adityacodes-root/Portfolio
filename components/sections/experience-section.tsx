@@ -11,6 +11,27 @@ import { useState, useRef, useEffect } from "react"
 
 const experiences = [
   {
+    id: "isro",
+    role: "Project Intern",
+    company: "Indian Space Research Organisation",
+    duration: "January 2025 – Present",
+    location: "Ahmedabad, India",
+    type: "Internship",
+    description: [
+      "Orchestrated containerized multi-mission workloads on an air-gapped Kubernetes cluster, improving scheduling efficiency by 35%.",
+      "Reduced workload provisioning time by 80% through Python-based automation of Kubernetes Job creation, execution, and monitoring.",
+      "Improved cluster resource utilization by 30% by evaluating and implementing resource-aware scheduling policies across 100+ concurrent workloads.",
+      "Deployed and maintained Prometheus, Grafana, and Loki for real-time observability, monitoring, and log aggregation across infrastructure, workloads, and applications."
+    ],
+    logo: "/logos/isro.png",
+    logoAlt: "ISRO Logo",
+    metrics: [
+      { label: "Scheduling Efficiency", value: "+35%", icon: <TrendingUp className="h-3 w-3" /> },
+      { label: "Provisioning Time", value: "-80%", icon: <Zap className="h-3 w-3" /> },
+      { label: "Resource Utilization", value: "+30%", icon: <Target className="h-3 w-3" /> }
+    ]
+  },
+  {
     id: "jio",
     role: "Software Engineer Intern",
     company: "Jio Platforms Ltd.",
@@ -73,7 +94,7 @@ export function ExperienceSection() {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return
-    
+
     const distance = touchStart - touchEnd
     const isLeftSwipe = distance > minSwipeDistance
     const isRightSwipe = distance < -minSwipeDistance
@@ -95,14 +116,14 @@ export function ExperienceSection() {
     <SectionWrapper id="experience">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -111,7 +132,7 @@ export function ExperienceSection() {
           >
             Experience
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -138,17 +159,12 @@ export function ExperienceSection() {
                   // Prevent rapid repeated clicks
                   setTimeout(() => setActiveExperience(exp), 50)
                 }}
-                className={`relative flex items-center gap-3 px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-150 focus:outline-none ${
-                  activeExperience.id === exp.id
-                    ? 'bg-primary text-primary-foreground shadow-lg pointer-events-none'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-card/80'
-                }`}
+                className={`relative flex items-center gap-3 px-6 py-3 rounded-lg text-sm font-medium transition-colors duration-150 focus:outline-none ${activeExperience.id === exp.id
+                  ? 'bg-primary text-primary-foreground shadow-lg pointer-events-none'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-card/80'
+                  }`}
               >
-                <div className={`relative h-6 w-6 rounded-lg border p-1 transition-all duration-300 ${
-                  activeExperience.id === exp.id 
-                    ? 'bg-primary-foreground/20 border-primary-foreground/30' 
-                    : 'bg-background/50 border-border'
-                }`}>
+                <div className="relative h-6 w-6 rounded-md bg-white p-0.5 overflow-hidden shadow-sm flex items-center justify-center shrink-0">
                   <Image
                     src={exp.logo}
                     alt={exp.logoAlt}
@@ -192,17 +208,17 @@ export function ExperienceSection() {
                   <div className="flex flex-col sm:flex-row sm:items-start gap-6">
                     {/* Company Logo */}
                     <div className="flex-shrink-0">
-                      <div className="relative h-16 w-16 rounded-xl border bg-background/50 p-3">
+                      <div className="relative h-16 w-16 rounded-xl bg-white p-2 overflow-hidden shadow-md flex items-center justify-center">
                         <Image
                           src={activeExperience.logo}
                           alt={activeExperience.logoAlt}
                           fill
                           sizes="64px"
-                          className="object-contain"
+                          className="object-contain rounded-lg"
                         />
                       </div>
                     </div>
-                    
+
                     {/* Role Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-3 mb-3">
@@ -258,8 +274,8 @@ export function ExperienceSection() {
                     <h4 className="text-sm font-medium text-muted-foreground mb-3">Key Achievements</h4>
                     <ul className="space-y-3">
                       {activeExperience.description.map((item, i) => (
-                        <li 
-                          key={i} 
+                        <li
+                          key={i}
                           className="text-sm text-muted-foreground leading-relaxed flex items-start gap-3"
                         >
                           <span className="text-primary mt-1.5 flex-shrink-0">•</span>
@@ -299,7 +315,7 @@ export function ExperienceSection() {
           <p className="text-muted-foreground mb-6 max-w-md mx-auto">
             Open to discussing technology, sharing knowledge, and building meaningful connections in the tech community.
           </p>
-          <Button 
+          <Button
             onClick={() => {
               setTimeout(() => {
                 const contactSection = document.getElementById('contact')
@@ -310,7 +326,7 @@ export function ExperienceSection() {
                   // Responsive offset: smaller for desktop, larger for mobile
                   const offset = window.innerWidth >= 768 ? 30 : 50
                   const targetPosition = scrollTop + rect.top - offset
-                  
+
                   window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'

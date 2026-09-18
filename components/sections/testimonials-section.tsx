@@ -8,9 +8,18 @@ import { useEffect, useRef, useState } from "react"
 
 const testimonials = [
 	{
+		id: "isro",
+		name: "Jalpa Modi",
+		role: "Sci/Engr. – SG & Head, SAR Data Processing Division",
+		quote:
+			"Aditya demonstrated his great dedication and perseverance to not only learn and understand complex concepts related to this field but also showed his ability to effectively translate his theoretical knowledge into practical solutions.",
+		avatar: "/logos/isro.png",
+		org: "Space Applications Centre (ISRO)",
+	},
+	{
 		id: "chetan",
 		name: "Chetan Garje",
-		role: "Backend Developer | Python Engineer | API & Automation Specialist",
+		role: "Backend Developer & Automation Specialist",
 		quote:
 			"I had the pleasure of working with Aditya on a project during his summer internship at Jio, and he was a real standout. He jumped into our work with confidence, whether it was streamlining backend code, or keeping things moving under tight deadlines. Aditya picks up new tech super fast, brings sharp ideas to the table, and gels with everyone like he's been part of the team forever. His positive energy and strong skills made our project better. He's got the kind of talent and drive that would make him a great fit for any team.",
 		avatar: "/logos/jio.png",
@@ -19,7 +28,7 @@ const testimonials = [
 	{
 		id: "bssk",
 		name: "Mrs. Naganadhini S",
-		role: "Executive Director , Bharatiya Samaj Seva Kendra",
+		role: "Executive Director",
 		quote:
 			"Aditya has been an invaluable asset to BSSK. His perseverance, dedication, and willingness to contribute towards our mission are qualities that will undoubtedly take him far!",
 		avatar: "/logos/bssk.jpg",
@@ -70,9 +79,9 @@ export function TestimonialsSection() {
 			<SectionWrapper id="testimonials">
 				<div className="text-center">
 					<h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-						What Others Say
+						Testimonials
 					</h2>
-					<p className="mt-4 text-lg text-muted-foreground">Testimonials from colleagues and mentors.</p>
+					<p className="mt-4 text-lg text-muted-foreground">What colleagues and mentors say about working with me.</p>
 				</div>
 				<div className="w-full max-w-4xl mx-auto mt-12">
 					<div className="h-64 bg-muted rounded-lg animate-pulse" />
@@ -99,7 +108,7 @@ export function TestimonialsSection() {
 						transition={{ delay: 0.1 }}
 						className="text-3xl font-bold tracking-tight sm:text-4xl"
 					>
-						What Others Say
+						Testimonials
 					</motion.h2>
 					<motion.p 
 						initial={{ opacity: 0, y: 20 }}
@@ -108,11 +117,11 @@ export function TestimonialsSection() {
 						transition={{ delay: 0.2 }}
 						className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto"
 					>
-						Testimonials from colleagues and mentors.
+						What colleagues and mentors say about working with me.
 					</motion.p>
 				</motion.div>
 
-				{/* Tab Navigation (mirrors Experience) */}
+				{/* Tab Navigation */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -133,17 +142,13 @@ export function TestimonialsSection() {
 										: 'text-muted-foreground hover:text-foreground hover:bg-card/80'
 								}`}
 							>
-								<div className={`relative h-6 w-6 rounded-lg border p-1 transition-all duration-300 ${
-									active.id === t.id 
-										? 'bg-primary-foreground/20 border-primary-foreground/30' 
-										: 'bg-background/50 border-border'
-								}`}>
+								<div className="relative h-6 w-6 rounded-md bg-white p-0.5 overflow-hidden shadow-sm flex items-center justify-center shrink-0">
 									<Image
 										src={t.avatar}
 										alt={t.name}
 										fill
 										sizes="24px"
-										className="object-contain rounded"
+										className="object-contain"
 									/>
 								</div>
 								<span className="hidden sm:inline font-medium">{t.org}</span>
@@ -181,13 +186,13 @@ export function TestimonialsSection() {
 									<div className="flex flex-col sm:flex-row sm:items-start gap-6">
 										{/* Avatar */}
 										<div className="flex-shrink-0">
-											<div className="relative h-16 w-16 rounded-xl border bg-background/50 p-3">
+											<div className="relative h-16 w-16 rounded-xl bg-white p-2 overflow-hidden shadow-md flex items-center justify-center">
 												<Image
 													src={active.avatar}
 													alt={active.name}
 													fill
 													sizes="64px"
-													className="object-contain rounded"
+													className="object-contain rounded-lg"
 												/>
 											</div>
 										</div>
@@ -197,8 +202,11 @@ export function TestimonialsSection() {
 											<CardTitle className="text-xl font-semibold tracking-tight mb-1">
 												{active.name}
 											</CardTitle>
-											<p className="text-base font-medium text-muted-foreground">
+											<p className="text-sm font-medium text-foreground/80">
 												{active.role}
+											</p>
+											<p className="text-xs text-muted-foreground mt-0.5">
+												{active.org}
 											</p>
 										</div>
 									</div>
