@@ -1,6 +1,6 @@
 # Portfolio
 
-After rebuilding my portfolios 4 times(yes, four😅), I have landed on a version I really like. I've focused on keeping a smooth and responsive experience for all devices, with clean transitions and a minimalist look. I've added multiple themes to add a creative touch. Planning to add a blog section soon, and maybe even show off some LeetCode stuff (if I ever get to it 💀).
+ Shifted to a new design.
 
  Please feel free to clone and make your own version :)
 
